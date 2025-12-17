@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const connectDB = require("./config/db");
 
@@ -14,6 +16,10 @@ app.use("/api/auth", authRoutes);
 
 const protectedRoutes = require("./routes/protected");
 app.use("/api", protectedRoutes);
+
+const documentRoutes = require("./routes/document");
+app.use("/api", documentRoutes);
+
 
 const PORT = 3000;
 app.listen(PORT, () => {

@@ -8,7 +8,7 @@ const register = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        res.status(400).json({ error: "Email and password are required" });}
+        return res.status(400).json({ error: "Email and password are required" });}
     
     try {
         const existingUser = await User.findOne({ email});
@@ -65,7 +65,7 @@ const login = async (req, res) => {
 
         const token = jwt.sign(
             { userId : user._id},
-            "supersecretkey",
+            process.env.JWT_SECRET,
             { expiresIn : "1h"}
         );
 
