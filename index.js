@@ -12,6 +12,9 @@ app.use("/api", healthRoutes);
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+const protectedRoutes = require("./routes/protected");
+app.use("/api", protectedRoutes);
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Secure Document Vault server is running on port ${PORT}`);
